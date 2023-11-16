@@ -1,0 +1,15 @@
+.elem {
+  position: relative;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid green;
+}
+
+.delete {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 4px 8px;
+  background-color: transparent;
+  cursor: pointer;
+}
