@@ -2,7 +2,11 @@
   position: relative;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid green;
+  border: 1px solid rgb(207, 238, 6);
+
+  &_complered {
+    border: 1px solid rgb(7, 186, 7);
+  }
 }
 
 .delete {
@@ -12,4 +16,9 @@
   padding: 4px 8px;
   background-color: transparent;
   cursor: pointer;
+}
+
+.complete {
+  width: 22px;
+  height: 22px;
 }

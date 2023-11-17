@@ -5,7 +5,6 @@ import { todo } from '../store/todo';
 import { observer } from 'mobx-react-lite';
 
 const Todos = observer(() => {
-
   return (
     <>
       <button onClick={() => todo.getTodos()}>

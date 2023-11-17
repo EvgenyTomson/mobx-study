@@ -1,4 +1,5 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
+import axios from 'axios';
 
 export type TodoT = {
   "userId": number,
@@ -7,6 +8,8 @@ export type TodoT = {
   "completed": boolean
 }
 
+const TODOS_URI = 'https://jsonplaceholder.typicode.com/todos';
+
 class Todo {
   todos: TodoT[] = []
 
@@ -14,15 +17,15 @@ class Todo {
     makeAutoObservable(this)
   }
 
-  getTodos() {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then(res => res.json())
-      .then(todos => {
-        this.todos = todos;
+  async getTodos() {
+    try {
+      const response = await axios.get<TodoT[]>(TODOS_URI);
+      runInAction(() => {
+        this.todos = response.data;
       })
-      .catch(err => {
-        console.log(err)
-      })
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   deleteTodo(id: number) {

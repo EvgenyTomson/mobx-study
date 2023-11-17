@@ -7,12 +7,16 @@ type Props = {
 }
 
 const Todo = observer(({curTodo}: Props) => {
+  const resultClass = curTodo.completed ? `${styles.elem} ${styles.elem_complered}` : styles.elem;
+  
   return (
     <li 
-      className={styles.elem}
+      className={resultClass}
     >
       <p>{curTodo.title}</p>
-      <input 
+      <input
+        className={styles.complete}
+        name='complete' 
         type='checkbox' 
         checked={curTodo.completed} 
         onChange={() => {todo.completeTodo(curTodo.id)}}
